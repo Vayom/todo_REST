@@ -20,7 +20,7 @@ class Task(models.Model):
         updated_at (DateTimeField): A field storing the date and time when the task was last updated.
             Automatically updated whenever the task object is modified.
 
-    Methods:
+    Methods:hehe
         __str__(): Returns the string representation of the task object, which is its title.
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
