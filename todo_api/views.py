@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import QuerySet
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
@@ -46,7 +47,7 @@ class TodoViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
     permission_classes = [IsAuthenticated, IsOwner]
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet[Task]:
         """
         Retrieves the queryset of Task objects belonging to the authenticated user.
 
