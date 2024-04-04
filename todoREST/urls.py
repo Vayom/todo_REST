@@ -8,6 +8,7 @@ from drf_spectacular.views import (
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 urlpatterns = [
+    path('admin/docs/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('api/v1/', include('todo_api.urls')),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
