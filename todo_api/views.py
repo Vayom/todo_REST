@@ -3,9 +3,10 @@ from django.db.models import QuerySet
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+import rest_framework.permissions as permissions
 
 from todo.models import Task
-from todo_api.permissions import IsOwner, UserPermission
+from todo_api.permissions import IsOwner
 from todo_api.serializers import TaskSerializer, UserSerializer
 
 
@@ -25,7 +26,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     serializer_class = UserSerializer
     queryset = User.objects.all().order_by("-date_joined")
-    permission_classes = [UserPermission, ]
+    permission_classes = [permissions.IsAdminUser]
 
 
 class TodoViewSet(viewsets.ModelViewSet):
